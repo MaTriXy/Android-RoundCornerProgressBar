@@ -1,4 +1,114 @@
- [![Build Status](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Round%20Corner%20Progress%20Bar-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1375) [![Build Status](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar)
+ 
+ 
+Instruction for version 2.0.0 or later isn't yet updated now. And I change attribute name, follow this
+
+*RoundCornerProgressBar*
+Attribute
+```
+rcProgress
+rcSecondaryProgress
+rcMax
+rcRadius
+rcBackgroundPadding
+rcReverse
+rcProgressColor
+rcSecondaryProgressColor
+rcBackgroundColor
+```
+
+Method
+```
+int getRadius()
+void setRadius(int radius)
+int getPadding()
+void setPadding(int padding)
+float getMax()
+void setMax(float max)
+
+float getProgress()
+void setProgress(float progress)
+float getSecondaryProgressWidth()
+float getSecondaryProgress()
+void setSecondaryProgress(float secondaryProgress)
+
+int getProgressBackgroundColor()
+void setProgressBackgroundColor(int colorBackground)
+int getProgressColor()
+void setProgressColor(int colorProgress)
+int getSecondaryProgressColor()
+void setSecondaryProgressColor(int colorSecondaryProgress)
+
+boolean isReverse()
+void setReverse(boolean isReverse)
+
+void setOnProgressChangedListener(OnProgressChangedListener listener)
+float getLayoutWidth()
+void invalidate()
+```
+
+*IconRoundCornerProgressBar*
+Additional attribute for IconRoundCornerProgressBar
+```
+rcIconSrc
+rcIconSize
+rcIconWidth
+rcIconHeight
+rcIconPadding
+rcIconPaddingLeft
+rcIconPaddingRight
+rcIconPaddingTop
+rcIconPaddingBottom
+rcIconBackgroundColor
+```
+
+Additional Method for IconRoundCornerProgressBar
+```
+int getIconImageResource()
+void setIconImageResource(int resId)
+
+int getIconSize()
+void setIconSize(int size)
+
+int getIconPadding()
+void setIconPadding(int padding)
+int getIconPaddingLeft()
+void setIconPaddingLeft(int padding)
+int getIconPaddingRight()
+void setIconPaddingRight(int padding)
+int getIconPaddingTop()
+void setIconPaddingTop(int padding)
+int getIconPaddingBottom()
+void setIconPaddingBottom(int padding)
+
+int getColorIconBackground()
+void setIconBackgroundColor(int color)
+
+void setOnIconClickListener(OnIconClickListener listener)
+```
+
+*TextRoundCornerProgressBar*
+Additional attribute for TextRoundCornerProgressBar
+```
+rcTextProgressColor
+rcTextProgressSize
+rcTextProgressMargin
+rcTextProgress
+```
+
+Additional method for TextRoundCornerProgressBar
+```
+String getProgressText()
+void setProgressText(String text)
+void setProgress(float progress)
+int getTextProgressColor()
+void setTextProgressColor(int color)
+int getTextProgressSize()
+void setTextProgressSize(int size)
+int getTextProgressMargin()
+void setTextProgressMargin(int margin)
+``` 
+ 
 Android-RoundCornerProgressBar
 ==============================
 
@@ -7,6 +117,14 @@ Android-RoundCornerProgressBar
 Round Corner Progress Bar Library for Android
 
 Colorful progress bar with round corner on progress which you can customized a color and corner radius. A library has two type of progress bar.
+
+
+What's new?
+===========================
+* Fix bug on older android version
+* Add secondary progress (Thanks! first087)
+* Refactor code (Thank! first087)
+* Rename attribute
 
 
 Round Corner Progress Bar
@@ -34,13 +152,13 @@ Maven
 <dependency>
   <groupId>com.akexorcist</groupId>
   <artifactId>RoundCornerProgressBar</artifactId>
-  <version>1.0.0</version>
+  <version>2.0.3</version>
 </dependency>
 ```
 
 Gradle
 ```
-compile 'com.akexorcist:RoundCornerProgressBar:1.0.0'
+compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
 ```
 
 Feature
@@ -66,12 +184,12 @@ Include 'com.akexorcist.roundcornerprogressbar' or 'com.akexorcist.iconroundcorn
 <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
         android:layout_width="dimension"
         android:layout_height="dimension"
-        app:backgroundPadding="dimension"
-        app:backgroundRadius="dimension"
-        app:backgroundColor="color"
-        app:progressColor="color"
-        app:progress="integer"
-        app:max="integer" />
+        app:rcBackgroundPadding="dimension"
+        app:rcBackgroundRadius="dimension"
+        app:rcBackgroundColor="color"
+        app:rcProgressColor="color"
+        app:rcProgress="integer"
+        app:rcMax="integer" />
 ```
 
 ![Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_002.jpg)
@@ -81,16 +199,16 @@ Include 'com.akexorcist.roundcornerprogressbar' or 'com.akexorcist.iconroundcorn
 <com.akexorcist.roundcornerprogressbar.IconRoundCornerProgressBar
         android:layout_width="dimension"
         android:layout_height="dimension"
-        app:iconPadding="dimension"
-        app:iconSize="dimension"
-        app:iconSrc="drawable"
-        app:backgroundPadding="dimension"
-        app:backgroundRadius="dimension"
-        app:backgroundColor="color"
-        app:headerColor="color"
-        app:progressColor="color"
-        app:progress="integer"
-        app:max="integer" />
+        app:rcIconPadding="dimension"
+        app:rcIconSize="dimension"
+        app:rcIconSrc="drawable"
+        app:rcBackgroundPadding="dimension"
+        app:rcBackgroundRadius="dimension"
+        app:rcBackgroundColor="color"
+        app:rcHeaderColor="color"
+        app:rcProgressColor="color"
+        app:rcProgress="integer"
+        app:rcMax="integer" />
 ```
 ![Icon Round Corner Progress Bar Usage](https://raw.githubusercontent.com/akexorcist/Android-RoundCornerProgressBar/master/image/usage_001.jpg)
 
@@ -198,12 +316,17 @@ int progress2 = progress2.getProgress();
 
 What's next?
 ===========================
-* Progress Animation
+* Explain new feature from first087
 
 
 Documentation
 ===========================
 Thai Language : http://www.akexorcist.com/2015/01/round-corner-progress-bar-library.html
+
+
+Special Thanks
+===========================
+Artit Kuiwilai @first087
 
 
 Licence
